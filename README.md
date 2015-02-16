@@ -6,6 +6,10 @@ phrases fetched from [FOAAS](http://foaas.herokuapp.com/), signed by the
 Swedish namesday name for a given date, or today's date, should no date be
 given. The name is fetched from [Svenska Dagar](http://api.dryg.net/).
 
+The project uses the [Twig template engine](http://twig.sensiolabs.org/) for
+rendering its views and the [Guzzle HTTP Client](http://docs.guzzlephp.org/)
+for consuming REST API:s.
+
 The data is presented as a simple web page in a calm font, or, if fed the
 header *Accept: application/json* as a JSON response.
 
