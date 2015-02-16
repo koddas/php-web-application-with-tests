@@ -1,0 +1,26 @@
+{
+	"keywords" : [
+		"Slim mashup"
+	],
+	"autoload" : {
+		"psr-4" : {
+			"Johan Holmberg\\PHP Web Application\\" : "src"
+		}
+	},
+	"name" : "Johan Holmberg/PHP Web Application",
+	"type" : "d",
+	"description" : "A demo PHP application that will insult you",
+	"license" : "MIT",
+	"require" : {
+		"php" : ">=5.3",
+		"slim/slim" : "2.5.0",
+		"guzzle/guzzle" : "3.9.2",
+		"twig/twig" : "1.18.0",
+		"slim/views" : "0.1.3"
+	},
+	"authors" : [{
+			"name" : "Johan Holmberg",
+			"email" : "johan@idioti.se"
+		}
+	]
+}
