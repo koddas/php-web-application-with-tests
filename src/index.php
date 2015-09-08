@@ -67,7 +67,7 @@ $app->error(function(Exception $e) use ($app) {
 			'stack' => $e->getMessage()
 	);
 	
-	$app->render('error.php', $error, 500);
+	$app->render('error.tpl', $error, 500);
 });
 
 // This starts the application
