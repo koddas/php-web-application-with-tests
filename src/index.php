@@ -58,6 +58,22 @@ $app->get('/insult/:year/:month/:day',
 });
 
 /**
+ * The /insult/name endpoint.
+ */
+$app->get('/insult/:name', function () use ($app) {
+	$insult = get_insult($name);
+	$accept = $app->request->headers->get('ACCEPT');
+	
+	if ($accept == 'application/json') {
+		$app->response->headers->set('Content-Type', 'application/json');
+		$app->response->setBody(json_encode($insult));
+	} else {
+		$message = array('title' => "Personalized insult", 'insult' => $insult);
+		$app->render('insult.tpl', $message);
+	}
+});
+
+/**
  * Produces an error message.
  */
 $app->error(function(Exception $e) use ($app) {
