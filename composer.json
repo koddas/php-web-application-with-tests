@@ -4,10 +4,10 @@
 	],
 	"autoload" : {
 		"psr-4" : {
-			"Johan Holmberg\\PHP Web Application\\" : "src"
+			"koddas\\PHPWebApplication\\" : "src"
 		}
 	},
-	"name" : "Johan Holmberg/PHP Web Application",
+	"name" : "koddas/PHPWebApplication",
 	"type" : "d",
 	"description" : "A demo PHP application that will insult you",
 	"license" : "MIT",
