@@ -6,7 +6,7 @@ class Utils
 	 * 
 	 * @return A string containing an endpoint name.
 	 */
-	function pick_insult() {
+	public function pick_insult() {
 		$endpoints = array("thanks", "fascinating", "because", "bye", "diabetes");
 		return $endpoints[rand(0, 4)];
 	}
@@ -17,7 +17,7 @@ class Utils
 	 * @param $name A string containing a name.
 	 * @return A string with the fetched insult.
 	 */
-	function get_insult($name) {
+	public function get_insult($name) {
 		$client = new Guzzle\Http\Client();
 	
 		$url = "http://foaas.herokuapp.com/" . $this->pick_insult() . "/" . $name;
@@ -40,7 +40,7 @@ class Utils
 	 * @param $day The day as a two-digit string.
 	 * @return A string with the name.
 	 */
-	function get_name($year, $month, $day) {
+	public function get_name($year, $month, $day) {
 		$client = new Guzzle\Http\Client();
 	
 		$url = "http://api.dryg.net/dagar/v2/" . $year . "/" . $month . "/" . $day;
