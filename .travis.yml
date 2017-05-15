@@ -3,7 +3,7 @@ os:
 addons:
   ssh_known_hosts:
   - $DEPLOY_HOST
-  - $DEPLOY_IP
+  - 13.81.1.118
 cache:
   directories:
   - "$HOME/.composer/cache"
