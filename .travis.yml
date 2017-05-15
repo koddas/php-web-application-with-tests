@@ -2,8 +2,7 @@ os:
 - linux
 addons:
   ssh_known_hosts:
-  - $DEPLOY_HOST
-  - $DEPLOY_IP
+  - insultr.westeurope.cloudapp.azure.com
 cache:
   directories:
   - "$HOME/.composer/cache"
