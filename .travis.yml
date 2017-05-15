@@ -1,56 +1,27 @@
-dist: trusty
-sudo: required
-
-# Här berättar vi vilka plattformar vi vill bygga och testa mot.
-# Vi nöjer oss med att testa mot Linux.
 os:
-  - linux
-
-# Om vi har några beroenden anger vi dem här.
-# Vi använder oss av php-mcrypt och php-cli.
+- linux
 addons:
-#  apt:
-#    packages:
-#      - php-mcrypt
-#      - php-cli
-  ssh_known_hosts: $DEPLOY_HOST
-
-# För att snabba upp våra byggen, vill vi spara undan våra beorenden mellan varje bygge.
+  ssh_known_hosts: "$DEPLOY_HOST"
 cache:
   directories:
-    - $HOME/.composer/cache
-
-# Här definierar vi vilket språk vi vill använda.
+  - "$HOME/.composer/cache"
 language: php
-
-# Här listar vi vilka versioner av PHP vi vill bygga och testa mot.
-# Vi nöjer oss med den version vi använt i kursen: 7.0
 php:
-  - 7.0
-
-# Installera beroenden
+- 7.0
 install:
-  - composer install
-
-# Kör bygget
+- composer install
 script:
-  # Kör testerna först
-  - vendor/bin/phpunit --configuration phpunit.xml --coverage-text
-  # Vill vi göra mer än så, kan vi glatt lägga till fler direktiv här.
-
-# Flytta till servern
+- vendor/bin/phpunit --configuration phpunit.xml --coverage-text
 deploy:
-  - provider: script
-    skip_cleanup: true # Om vi missar detta skickas inga filer
-    script:
-       - rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR $DEPLOY_USER:$DEPLOY_PASS@$DEPLOY_HOST:/home/johan/insultr
-#      - scp $TRAVIS_BUILD_DIR $DEPLOY_USER:$DEPLOY_PASS@$DEPLOY_HOST:/tmp/$TRAVIS_BUILD_ID
-#      - rm -rf /tmp/old.build && mv path/to/files /tmp/old.build && mv /tmp/$TRAVIS_BUILD_ID /home/johan/insultr
-    on:
-      branch: master # Vi deployar bara från master
-
-# Skicka information om hur allt gick till en e-postadress.
-# Det går utmärkt att skicka information till exempelvis Slack med.
+- provider: script
+  skip_cleanup: true
+  script:
+  - rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR $DEPLOY_USER:$DEPLOY_PASS@$DEPLOY_HOST:/home/johan/insultr
+  on:
+    branch: master
 notifications:
   email:
-    recipients: "johan.holmberg@mah.se"
+    recipients: johan.holmberg@mah.se
+before_install:
+- openssl aes-256-cbc -K $encrypted_fd2bea8427ff_key -iv $encrypted_fd2bea8427ff_iv
+  -in deploy_rsa.enc -out deploy_rsa -d
