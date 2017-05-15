@@ -12,8 +12,6 @@ addons:
       - php-cli
   ssh_known_hosts: $DEPLOY_HOST
 
-sudo: required
-
 # För att snabba upp våra byggen, vill vi spara undan våra beorenden mellan varje bygge.
 cache:
   directories:
