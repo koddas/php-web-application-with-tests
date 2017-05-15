@@ -1,0 +1,51 @@
+# Här berättar vi vilka plattformar vi vill bygga och testa mot.
+# Vi nöjer oss med att testa mot Linux.
+os:
+  - linux
+
+# Om vi har några beroenden anger vi dem här.
+# Vi använder oss av php-mcrypt och php-cli.
+addons:
+  apt:
+    packages:
+      - php-mcrypt
+      - php-cli
+
+# För att snabba upp våra byggen, vill vi spara undan våra beorenden mellan varje bygge.
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+# Här definierar vi vilket språk vi vill använda.
+language: php
+
+# Här listar vi vilka versioner av PHP vi vill bygga och testa mot.
+# Vi nöjer oss med den version vi använt i kursen: 7.0
+php:
+  - 7.0
+
+# Installera beroenden
+install:
+  - composer install
+
+# Kör bygget
+script:
+  # Kör testerna först
+  - vendor/bin/phpunit --configuration phpunit.xml --coverage-text
+  # Vill vi göra mer än så, kan vi glatt lägga till fler direktiv här.
+
+# Flytta till servern
+deploy:
+  - provider: script
+    skip_cleanup: true # Om vi missar detta skickas inga filer
+    script:
+      - scp $TRAVIS_BUILD_DIR $DEPLOY_USER:$DEPLOY_PASS@$DEPLOY_HOST:/tmp/$TRAVIS_BUILD_ID
+      - rm -rf /tmp/old.build && mv path/to/files /tmp/old.build && mv /tmp/$TRAVIS_BUILD_ID /home/johan/insultr
+    on:
+      branch: master # Vi deployar bara från master
+
+# Skicka information om hur allt gick till en e-postadress.
+# Det går utmärkt att skicka information till exempelvis Slack med.
+notifications:
+  email:
+    recipients: "johan.holmberg@mah.se"

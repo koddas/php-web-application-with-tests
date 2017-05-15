@@ -18,6 +18,8 @@ just as fine* on some versions of PHP 5 as well, though
 
 *) The embedded web server, mentioned below, requires PHP 5.4 to run, though.
 
+[![Build Status](https://secure.travis-ci.org/koddas/php-web-application-with-tests.png?branch=master)](http://travis-ci.org/koddas/php-web-application-with-tests)
+
 # How do I build this project?
 
 Being written in PHP, there is no real building involved. However, you will
