@@ -43,8 +43,9 @@ deploy:
   - provider: script
     skip_cleanup: true # Om vi missar detta skickas inga filer
     script:
-      - scp $TRAVIS_BUILD_DIR $DEPLOY_USER:$DEPLOY_PASS@$DEPLOY_HOST:/tmp/$TRAVIS_BUILD_ID
-      - rm -rf /tmp/old.build && mv path/to/files /tmp/old.build && mv /tmp/$TRAVIS_BUILD_ID /home/johan/insultr
+       - rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR $DEPLOY_USER:$DEPLOY_PASS@$DEPLOY_HOST:/home/johan/insultr
+#      - scp $TRAVIS_BUILD_DIR $DEPLOY_USER:$DEPLOY_PASS@$DEPLOY_HOST:/tmp/$TRAVIS_BUILD_ID
+#      - rm -rf /tmp/old.build && mv path/to/files /tmp/old.build && mv /tmp/$TRAVIS_BUILD_ID /home/johan/insultr
     on:
       branch: master # Vi deployar bara från master
 
