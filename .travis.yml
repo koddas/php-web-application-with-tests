@@ -28,9 +28,6 @@ language: php
 php:
   - 7.0
 
-before_install:
-  - apt-get update
-
 # Installera beroenden
 install:
   - composer install
