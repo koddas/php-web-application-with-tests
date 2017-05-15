@@ -1,7 +1,7 @@
 os:
 - linux
 addons:
-  ssh_known_hosts: "$DEPLOY_HOST"
+  ssh_known_hosts: $DEPLOY_HOST
 cache:
   directories:
   - "$HOME/.composer/cache"
