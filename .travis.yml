@@ -9,10 +9,10 @@ os:
 # Om vi har några beroenden anger vi dem här.
 # Vi använder oss av php-mcrypt och php-cli.
 addons:
-  apt:
-    packages:
-      - php-mcrypt
-      - php-cli
+#  apt:
+#    packages:
+#      - php-mcrypt
+#      - php-cli
   ssh_known_hosts: $DEPLOY_HOST
 
 # För att snabba upp våra byggen, vill vi spara undan våra beorenden mellan varje bygge.
