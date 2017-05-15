@@ -1,3 +1,6 @@
+dist: trusty
+sudo: required
+
 # Här berättar vi vilka plattformar vi vill bygga och testa mot.
 # Vi nöjer oss med att testa mot Linux.
 os:
