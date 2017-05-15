@@ -16,7 +16,7 @@ deploy:
 - provider: script
   skip_cleanup: true
   script:
-  - rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR $DEPLOY_USER:$DEPLOY_PASS@$DEPLOY_HOST:/home/johan/insultr
+  - rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR $DEPLOY_USER@$DEPLOY_HOST:/home/johan/insultr
   on:
     branch: master
 notifications:
